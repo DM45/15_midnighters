@@ -12,7 +12,7 @@ pip install -r requirements.txt # alternatively try pip3
 
 # How it work
 ```bash
-python cseek_dev_nighters.py
+python seek_dev_nighters.py
 ```
 
 # Output
