@@ -4,8 +4,9 @@ import datetime
 
 
 def get_number_of_page():
-    url = 'https://devman.org/api/challenges/solution_attempts/?page=1'
-    request_numb_pages = requests.get(url)
+    url = 'https://devman.org/api/challenges/solution_attempts'
+    parameter = {'page': 1}
+    request_numb_pages = requests.get(url, params=parameter)
     number_of_pages = request_numb_pages.json()['number_of_pages']
     return number_of_pages
 
