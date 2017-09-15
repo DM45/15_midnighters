@@ -10,7 +10,7 @@ Python 3 should be already installed. Then use pip (or pip3 if there is a confli
 pip install -r requirements.txt # alternatively try pip3
 ```
 
-# How it work
+# How it get
 ```bash
 python seek_dev_nighters.py
 ```
