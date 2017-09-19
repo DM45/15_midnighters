@@ -21,12 +21,12 @@ def get_valid_tasks_info(number_of_pages, first_page_info):
     all_tasks_info = []
     for pages in range(additional_factor, number_of_pages + additional_factor):
         if range == additional_factor:
-            page_info = first_page_info
+            page_info = first_page_info['records']
         else:
             url = 'https://devman.org/api/challenges/solution_attempts'
             parameter = {'page': pages}
             requst_info = requests.get(url, params=parameter)
-        page_info = requst_info.json()['records']
+            page_info = requst_info.json()['records']
         for position in page_info:
             if position.get('timestamp'):
                 tasks_info = {
