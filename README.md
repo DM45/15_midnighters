@@ -16,11 +16,11 @@ python seek_dev_nighters.py
 ```
 
 # Output
-
+```bash
 List of midnighters:
 
 VasiaPupkin, Neo, Buratino
-
+```
 # Project Goals
 
 The code is written for educational purposes. Training course for web-developers - [DEVMAN.org](https://devman.org)
