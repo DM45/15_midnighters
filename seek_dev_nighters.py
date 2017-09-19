@@ -3,21 +3,29 @@ import pytz
 import datetime
 
 
-def get_number_of_page():
+def get_first_page_info():
     url = 'https://devman.org/api/challenges/solution_attempts'
     parameter = {'page': 1}
     request_numb_pages = requests.get(url, params=parameter)
-    number_of_pages = request_numb_pages.json()['number_of_pages']
+    first_page_info = request_numb_pages.json()
+    return first_page_info
+
+
+def get_number_of_page(first_page_info):
+    number_of_pages = first_page_info['number_of_pages']
     return number_of_pages
 
 
-def get_valid_tasks_info(number_of_pages):
+def get_valid_tasks_info(number_of_pages, first_page_info):
     additional_factor = 1
     all_tasks_info = []
     for pages in range(additional_factor, number_of_pages + additional_factor):
-        url = 'https://devman.org/api/challenges/solution_attempts'
-        parameter = {'page': pages}
-        requst_info = requests.get(url, params=parameter)
+        if range == additional_factor:
+            page_info = first_page_info
+        else:
+            url = 'https://devman.org/api/challenges/solution_attempts'
+            parameter = {'page': pages}
+            requst_info = requests.get(url, params=parameter)
         page_info = requst_info.json()['records']
         for position in page_info:
             if position.get('timestamp'):
@@ -51,7 +59,8 @@ def get_midnighters(all_tasks_info):
 
 
 if __name__ == '__main__':
-    number_of_pages = get_number_of_page()
-    tasks_info = get_valid_tasks_info(number_of_pages)
+    first_page_info = get_first_page_info()
+    number_of_pages = get_number_of_page(first_page_info)
+    tasks_info = get_valid_tasks_info(number_of_pages, first_page_info)
     print('List of midnighters: ')
     print(' '.join(get_midnighters(tasks_info)))
